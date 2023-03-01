@@ -8,4 +8,6 @@ const teamsRoutes = Router();
 
 teamsRoutes.get('/', (req, res) => teamController.findAll(req, res));
 
+teamsRoutes.get('/:id', (req, res) => teamController.findById(req, res));
+
 export default teamsRoutes;

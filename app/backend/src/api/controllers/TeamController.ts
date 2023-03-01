@@ -10,8 +10,17 @@ export default class TeamController {
 
   async findAll(_req: Request, res: Response) {
     const allTeams = await this._service.findAll();
-    console.log(allTeams);
+    // console.log(allTeams);
 
     return res.status(200).json(allTeams);
+  }
+
+  async findById(req: Request, res: Response) {
+    const { id } = req.params;
+    console.log(id);
+
+    const selectedTeamById = await this._service.findById(Number(id));
+    if (selectedTeamById) return res.status(200).json(selectedTeamById);
+    return res.status(401).json({ message: 'time não encontrado' });
   }
 }

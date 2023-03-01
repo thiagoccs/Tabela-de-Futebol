@@ -24,7 +24,7 @@ describe('Testes de serviço: FindAll Team', function() {
     sinon.stub(Model, 'findAll').resolves(teamsMock);
     const service = new TeamService;
     const result = await service.findAll();
-    // console.log(result);
+    console.log(result);
     
     expect(result).to.be.equal(teamsMock);
     expect(result.length).to.be.equal(5)
