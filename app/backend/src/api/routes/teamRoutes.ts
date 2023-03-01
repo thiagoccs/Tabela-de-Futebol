@@ -3,9 +3,9 @@ import TeamService from '../services/TeamService';
 import TeamController from '../controllers/TeamController';
 
 const teamService = new TeamService();
-const teamControlle = new TeamController(teamService);
+const teamController = new TeamController(teamService);
 const teamsRoutes = Router();
 
-teamsRoutes.get('/', teamControlle.findAll);
+teamsRoutes.get('/', (req, res) => teamController.findAll(req, res));
 
 export default teamsRoutes;
