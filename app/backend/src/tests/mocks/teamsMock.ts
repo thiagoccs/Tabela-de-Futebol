@@ -9,3 +9,4 @@ const teamsMock: Team[] = [
 ] as Team[];
 
 export default teamsMock;
+
