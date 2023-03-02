@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import IServiceUser from '../interfaces/IServiceUser'
+import IServiceUser from '../interfaces/IServiceUser';
 
 export default class UserController {
   private _service: IServiceUser;
