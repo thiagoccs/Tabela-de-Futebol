@@ -8,17 +8,11 @@ export default class LoginService implements IServiceUser {
   protected model: ModelStatic<User> = User;
 
   async validate(email: string, password: string): Promise<string | null> {
-    const find = await this.model.findOne({ where: { email } });
+    const findUser = await this.model.findOne({ where: { email } });
 
-    if (find) {
-      const { password: passwordDb } = find;
-      const isValidPw = bcrypt.compareSync(password, passwordDb);
-      console.log(isValidPw);
-
-      if (isValidPw) {
-        const token = JWT.generateToken(find);
-        return token;
-      }
+    if (findUser && bcrypt.compareSync(password, findUser.password)) {
+      const token = JWT.generateToken(findUser);
+      return token;
     }
 
     return null;
