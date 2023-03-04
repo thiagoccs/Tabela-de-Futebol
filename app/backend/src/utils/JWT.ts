@@ -17,10 +17,6 @@ const generateToken = (payload: User) => {
 };
 
 const decripytToken = (token: string) => {
-  if (!token) {
-    throw new Error('Undefined Token');
-  }
-
   try {
     return JWT.verify(token, SECRET);
   } catch (error) {
