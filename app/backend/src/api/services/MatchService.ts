@@ -10,8 +10,8 @@ export default class MatchService implements IServiceMatch {
   async findAll(): Promise<IMatch[]> {
     const allMatches = await this.model.findAll({
       include: [
-        { model: Team, as: 'homeTeam' },
-        { model: Team, as: 'awayTeam' },
+        { model: Team, as: 'homeTeam', attributes: ['teamName'] },
+        { model: Team, as: 'awayTeam', attributes: ['teamName'] },
       ],
     });
     return allMatches;
