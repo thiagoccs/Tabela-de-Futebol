@@ -9,6 +9,8 @@ export default class MatchController {
   }
 
   async findAll(req: Request, res: Response) {
+    // console.log(req.body);
+
     const allMatches = await this._service.findAll();
 
     if (req.query.inProgress) {
@@ -38,13 +40,9 @@ export default class MatchController {
     });
   }
 
-  // async createMatch(req: Request, res: Response) {
-  //   const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+  async createMatch(req: Request, res: Response) {
+    const match = await this._service.createNewMath(req.body);
 
-  //   const newMatch = await this._service
-  //     .createNewMath(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
-  //   console.log(newMatch);
-
-  //   return res.status(201).json({ message: 'teste' });
-  // }
+    return res.status(201).json(match);
+  }
 }

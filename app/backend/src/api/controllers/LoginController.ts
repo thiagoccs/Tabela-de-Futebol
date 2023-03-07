@@ -9,6 +9,8 @@ export default class LoginController {
   }
 
   findOneUser = async (req: Request, res: Response) => {
+    // console.log(req.body);
+
     const { email, password } = req.body;
 
     const userToken = await this._service.validate(email, password);
@@ -18,7 +20,8 @@ export default class LoginController {
   };
 
   getRole = async (req: Request, res: Response) => {
+    // console.log(req.body);
     const { role } = req.body;
-    return res.status(200).json({ role });
+    return res.status(200).json({ role: role.role });
   };
 }
