@@ -20,11 +20,31 @@ export default class MatchController {
     return res.status(200).json(allMatches);
   }
 
-  async changeMatch(req: Request, res: Response) {
+  async changeMatchProgress(req: Request, res: Response) {
     const { id } = req.params;
 
     await this._service.finishedMatch(Number(id));
 
     return res.status(200).json({ message: 'Finished' });
   }
+
+  async changeGoalsMatch(req: Request, res: Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+
+    await this._service.updateGoalsMatch(Number(id), homeTeamGoals, awayTeamGoals);
+    return res.status(200).json({
+      message: `Match with id: ${id} has been updated. ${homeTeamGoals} x ${awayTeamGoals}`,
+    });
+  }
+
+  // async createMatch(req: Request, res: Response) {
+  //   const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+
+  //   const newMatch = await this._service
+  //     .createNewMath(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+  //   console.log(newMatch);
+
+  //   return res.status(201).json({ message: 'teste' });
+  // }
 }

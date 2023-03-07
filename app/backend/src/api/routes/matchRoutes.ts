@@ -11,6 +11,12 @@ matchRoutes
   .get('/', (req, res) => matchController.findAll(req, res));
 
 matchRoutes
-  .patch('/:id/finish', validateToken, (req, res) => matchController.changeMatch(req, res));
+  .patch('/:id/finish', validateToken, (req, res) => matchController.changeMatchProgress(req, res));
+
+matchRoutes
+  .patch('/:id', validateToken, (req, res) => matchController.changeGoalsMatch(req, res));
+
+// matchRoutes
+//   .post('/', validateToken, (req, res) => matchController.createMatch(req, res));
 
 export default matchRoutes;

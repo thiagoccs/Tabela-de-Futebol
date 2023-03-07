@@ -18,19 +18,19 @@ Match.init({
     autoIncrement: true,
     primaryKey: true,
   },
-  homeTeamGoals: {
-    type: INTEGER,
-    allowNull: false,
-  },
   homeTeamId: {
     type: INTEGER,
     allowNull: false,
   },
-  awayTeamGoals: {
+  homeTeamGoals: {
     type: INTEGER,
     allowNull: false,
   },
   awayTeamId: {
+    type: INTEGER,
+    allowNull: false,
+  },
+  awayTeamGoals: {
     type: INTEGER,
     allowNull: false,
   },
