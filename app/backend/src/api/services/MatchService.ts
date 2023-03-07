@@ -26,7 +26,6 @@ export default class MatchService implements IServiceMatch {
   }
 
   async createNewMath(payload: IMatch): Promise<IMatch> {
-    // console.log(payload);
     const newMatch = await this.model.create({ ...payload, inProgress: true });
     return newMatch;
   }

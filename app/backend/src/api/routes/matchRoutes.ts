@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import MatchController from '../controllers/MatchController';
+import validadeMathFields from '../middlewares/checkMatchFields.middle';
 import validateToken from '../middlewares/checkToken.middle';
 import MatchService from '../services/MatchService';
 
@@ -17,6 +18,7 @@ matchRoutes
   .patch('/:id', validateToken, (req, res) => matchController.changeGoalsMatch(req, res));
 
 matchRoutes
-  .post('/', validateToken, (req, res) => matchController.createMatch(req, res));
+  .post('/', validateToken, validadeMathFields, (req, res) =>
+    matchController.createMatch(req, res));
 
 export default matchRoutes;
