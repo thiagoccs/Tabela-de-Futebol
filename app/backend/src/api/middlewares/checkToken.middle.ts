@@ -10,7 +10,7 @@ export default function validateToken(req: Request, res: Response, next: NextFun
 
   if (!validateUser) return res.status(401).json({ message: 'Token must be a valid token' });
 
-  req.body.role = validateUser.role;
+  req.body.role = validateUser;
 
   next();
 }
