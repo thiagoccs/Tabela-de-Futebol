@@ -1,5 +1,8 @@
 import { Request, Response } from 'express';
 import IServiceMatch from '../interfaces/IServiceMatch';
+import TeamService from '../services/TeamService';
+
+const teamService = new TeamService();
 
 export default class MatchController {
   private _service: IServiceMatch;
@@ -41,6 +44,14 @@ export default class MatchController {
   }
 
   async createMatch(req: Request, res: Response) {
+    const { homeTeamId, awayTeamId } = req.body;
+
+    const homeTeam = await teamService.findById(homeTeamId);
+    const awayTeam = await teamService.findById(awayTeamId);
+
+    if (!homeTeam || !awayTeam) {
+      return res.status(404).json({ message: 'There is no team with such id!' });
+    }
     const match = await this._service.createNewMath(req.body);
 
     return res.status(201).json(match);
