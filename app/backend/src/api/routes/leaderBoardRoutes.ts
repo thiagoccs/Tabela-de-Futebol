@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import TeamController from '../controllers/TeamController';
-import TeamService from '../services/TeamService';
+import LeaderBoardController from '../controllers/LeaderBoardController';
+import LeaderBoardService from '../services/LeaderBoardService';
 
-const teamService = new TeamService();
-const teamController = new TeamController(teamService);
+const leaderBoardService = new LeaderBoardService();
+const leaderBoardController = new LeaderBoardController(leaderBoardService);
 const leaderBoardRoutes = Router();
 
-leaderBoardRoutes.get('/home', (req, res) => teamController.leaderBoardHome(req, res));
+leaderBoardRoutes.get('/home', (req, res) => leaderBoardController.leaderBoardHome(req, res));
 
 export default leaderBoardRoutes;
