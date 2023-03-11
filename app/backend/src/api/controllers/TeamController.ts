@@ -23,4 +23,11 @@ export default class TeamController {
     if (selectedTeamById) return res.status(200).json(selectedTeamById);
     return res.status(401).json({ message: 'time não encontrado' });
   }
+
+  async leaderBoardHome(req: Request, res: Response) {
+    const allTeams = await this._service.findAll();
+    // console.log(allTeams);
+
+    return res.status(200).json({ teste: allTeams });
+  }
 }
