@@ -1,5 +1,10 @@
 import { Request, Response } from 'express';
+// import IMatch from '../interfaces/IMatch';
 import IServiceTeam from '../interfaces/IServiceTeam';
+// import ITeam from '../interfaces/ITeam';
+// import MatchService from '../services/MatchService';
+
+// const matchesService = new MatchService();
 
 export default class TeamController {
   private _service: IServiceTeam;
@@ -22,12 +27,5 @@ export default class TeamController {
     const selectedTeamById = await this._service.findById(Number(id));
     if (selectedTeamById) return res.status(200).json(selectedTeamById);
     return res.status(401).json({ message: 'time não encontrado' });
-  }
-
-  async leaderBoardHome(req: Request, res: Response) {
-    const allTeams = await this._service.findAll();
-    // console.log(allTeams);
-
-    return res.status(200).json({ teste: allTeams });
   }
 }
