@@ -136,7 +136,7 @@ export default class LeaderBoardHomeService {
     return ordenados;
   }
 
-  async leaderBoard() {
+  async leaderBoardHome() {
     const times = await this.teamModel.findAll();
     const partidas = await this.matchModel.findAll({
       where: { inProgress: 0 },
