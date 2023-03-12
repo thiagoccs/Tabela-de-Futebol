@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import LeaderBoardService from '../services/LeaderBoardService';
+import LeaderBoardService from '../services/LeaderBoardHomeService';
 
 export default class LeaderBoardController {
   private _service: LeaderBoardService;
@@ -9,7 +9,7 @@ export default class LeaderBoardController {
   }
 
   async leaderBoardHome(req: Request, res: Response) {
-    const allTeams = await this._service.leaderboard();
+    const allTeams = await this._service.leaderBoard();
     return res.status(200).json(allTeams);
   }
 }
