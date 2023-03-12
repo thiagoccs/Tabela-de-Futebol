@@ -126,7 +126,7 @@ export default class LeaderBoardAwayService {
     return ordenados;
   }
 
-  async leaderBoard() {
+  async leaderBoardAway() {
     const times = await this.teamModel.findAll();
     const partidas = await this.matchModel.findAll({
       where: { inProgress: 0 },
