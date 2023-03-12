@@ -10,7 +10,6 @@ import { teamsMock, oneTeamMock } from './mocks/teamsMock';
 // import { Response } from 'superagent';
 import TeamService from '../api/services/TeamService';
 import Team from '../database/models/TeamModel';
-import ITeam from '../api/interfaces/ITeam';
 
 chai.use(chaiHttp);
 
@@ -41,7 +40,7 @@ describe('Testes de serviço: Team', function() {
     
     const service = new TeamService;
     const result = await service.findById(oneTeamMock.id);
-    console.log(result);
+    // console.log(result);
 
     const response = await chai.request(app).get('/teams/1');
     
